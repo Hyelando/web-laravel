@@ -2,8 +2,11 @@
 
 use App\Http\Middleware\EnsureTeamMembership;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PageController;
 
-Route::view('/', 'welcome')->name('home');
+Route::get('/', [PageController::class, 'index']);
+
+//Route::view('/', 'welcome')->name('home');
 
 Route::prefix('{current_team}')
     ->middleware(['auth', 'verified', EnsureTeamMembership::class])
