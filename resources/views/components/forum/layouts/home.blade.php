@@ -10,22 +10,7 @@
 <body style="background-color: #f9e3d2;">
     <div class="h-screen flex flex-col">
         <div class="px-4">
-            <nav class="flex items-center justify-between h-16">
-                <div>
-                    <a href="#">
-                        Logo
-                    </a>
-                </div>
-                
-                <div class="flex gap-4">
-                    <a href="#" class="text-sm font-semibold">Foro</a>
-                    <a href="#" class="text-sm font-semibold">Blog</a>
-                </div>
-                
-                <div>
-                    <a href="#" class="text-sm font-semibold">Log in &rarr;</a>
-                </div>
-            </nav>
+            <x-forum.navbar />
         </div>
 
         <div class="relative h-full flex items-center justify-center">
