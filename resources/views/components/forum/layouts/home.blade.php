@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,41 +7,55 @@
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body style="background-color: #f9e3d2;">
-    <div class="h-screen flex flex-col">
-        <div class="px-4">
-            <x-forum.navbar />
-        </div>
+<body class="bg-purple-950 text-purple-100 font-sans min-h-screen flex flex-col selection:bg-orange-500 selection:text-white">
+    
+    <div class="flex flex-col min-h-screen">
+        <header class="bg-purple-900/50 backdrop-blur-md border-b border-purple-800/50 sticky top-0 z-50">
+            <div class="max-w-7xl mx-auto px-4">
+                <x-forum.navbar />
+            </div>
+        </header>
 
-        <div class="relative h-full flex items-center justify-center">
+        <div class="relative flex-1 flex items-center justify-center px-4 py-12 overflow-hidden">
             <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu blur-3xl sm:-top-80">
-                <div class="relative left-[calc(50%-11rem)] aspect-1155/678 w-144.5 -translate-x-1/2 rotate-30 bg-linear-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-288.75" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
+                <div class="relative left-[calc(50%-11rem)] aspect-1155/678 w-144.5 -translate-x-1/2 rotate-30 bg-gradient-to-tr from-orange-500/20 to-purple-800/30 opacity-40 sm:left-[calc(50%-30rem)] sm:w-288.75" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
             </div>
 
-            <div class="max-w-2xl">
+            <div class="max-w-2xl text-center">
                 <div class="hidden sm:mb-8 sm:flex sm:justify-center">
-                    <div class="rounded-full px-4 py-2 text-sm text-gray-600 border border-gray-300">
-                        Resuelve tus preguntas de programación. <a href="#" class="font-semibold text-indigo-600">Acerca de &rarr;</a>
+                    <div class="rounded-full px-4 py-1.5 text-xs font-medium text-purple-200 border border-purple-700/50 bg-purple-900/40 shadow-sm">
+                        Resuelve tus preguntas de programación. <a href="#" class="font-semibold text-orange-400 hover:text-orange-300 transition">Acerca de &rarr;</a>
                     </div>
                 </div>
         
-                <div class="text-center">
-                    <h1 class="text-5xl font-semibold text-gray-900 sm:text-7xl">Bienvenido a tu foro favorito</h1>                        
-                    <p class="my-8 text-lg font-medium text-gray-500 sm:text-xl">Es un espacio para compartir, aprender y crecer en el mundo de la programación. Únete a nuestra comunidad, participa en discusiones y aprende de otros profesionales.</p>
-                    <div class="flex items-center justify-center gap-6">
-                        <a href="{{route('questions.create')}}" class="rounded-md bg-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500">Preguntar</a>
-                            @guest
-                        <a href="{{route('questions.create')}}" class="text-sm font-semibold text-gray-900">Login &rarr;</a>
-                            @endguest
+                <div class="space-y-6">
+                    <h1 class="text-4xl font-extrabold tracking-tight text-white sm:text-6xl drop-shadow-sm">
+                        Bienvenido a tu foro favorito
+                    </h1>                        
+                    
+                    <p class="text-base font-medium text-purple-300 sm:text-lg max-w-xl mx-auto leading-relaxed">
+                        Es un espacio para compartir, aprender y crecer en el mundo de la programación. Únete a nuestra comunidad, participa en discusiones y aprende de otros profesionales.
+                    </p>
+                    
+                    <div class="flex items-center justify-center gap-4 pt-2">
+                        <a href="{{ route('questions.create') }}" class="rounded-lg bg-orange-600 hover:bg-orange-500 px-5 py-2.5 text-xs font-semibold text-white shadow-lg shadow-orange-600/20 cursor-pointer transition">
+                            Preguntar
+                        </a>
+                        
+                        @guest
+                        <a href="{{ route('login') }}" class="text-xs font-bold text-purple-200 hover:text-orange-400 transition">
+                            Login &rarr;
+                        </a>
+                        @endguest
                     </div>
-
                 </div>
             </div>
         </div>
+
+        <div class="mx-auto max-w-4xl w-full px-4 mb-12">
+            {{ $slot }}
+        </div>
     </div>
-    
-    <div class="mx-auto max-w-4xl px-4 mb-8">
-        {{ $slot }}
-    </div>
+
 </body>
 </html>
