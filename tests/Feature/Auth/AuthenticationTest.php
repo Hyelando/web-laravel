@@ -6,9 +6,7 @@ use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\Request;
 use Laravel\Fortify\Features;
-/* @chisel-passkeys */
 use Laravel\Passkeys\Contracts\PasskeyLoginResponse;
-/* @end-chisel-passkeys */
 use Tests\TestCase;
 
 class AuthenticationTest extends TestCase
@@ -38,7 +36,6 @@ class AuthenticationTest extends TestCase
         $this->assertAuthenticated();
     }
 
-    /* @chisel-passkeys */
     public function test_passkey_login_response_redirects_to_the_current_team_dashboard(): void
     {
         $user = User::factory()->create();
@@ -56,7 +53,6 @@ class AuthenticationTest extends TestCase
             $jsonResponse->getData()->redirect,
         );
     }
-    /* @end-chisel-passkeys */
 
     public function test_users_can_not_authenticate_with_invalid_password(): void
     {

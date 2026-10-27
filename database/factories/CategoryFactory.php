@@ -15,11 +15,11 @@ class CategoryFactory extends Factory
      *
      * @return array<string, mixed>
      */
-public function definition(): array
-{
-    return [
-        'name' => fake()->word(),
-        'color' => fake()->hexColor(),
-    ];
-}
+    public function definition(): array
+    {
+        return [
+            'name' => fake()->word(),
+            'color' => fake()->hexColor(),
+        ];
+    }
 }

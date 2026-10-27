@@ -23,6 +23,7 @@ new class extends Component
 
 <div>
     <div>
+        @auth
         <a wire:click="toggle" class="cursor-pointer">
             @if ($heartable->isHearted())
                 
@@ -31,6 +32,9 @@ new class extends Component
             <span class="text-gray-600">&hearts;</span>
             @endif
         </a>
+        @else
+        <span class="text-gray-600">&hearts;</span>
+        @endauth
     </div>
 
 <!-- https://heroicons.dev/ (opcional): Heart -->

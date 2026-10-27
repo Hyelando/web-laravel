@@ -1,9 +1,7 @@
 <?php
 
 use App\Concerns\ProfileValidationRules;
-/* @chisel-email-verification */
 use Illuminate\Contracts\Auth\MustVerifyEmail;
-/* @end-chisel-email-verification */
 use Flux\Flux;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -46,7 +44,6 @@ new #[Title('Profile settings')] class extends Component {
         Flux::toast(variant: 'success', text: __('Profile updated.'));
     }
 
-    /* @chisel-email-verification */
     /**
      * Send an email verification notification to the current user.
      */
@@ -77,7 +74,6 @@ new #[Title('Profile settings')] class extends Component {
         return ! Auth::user() instanceof MustVerifyEmail
             || (Auth::user() instanceof MustVerifyEmail && Auth::user()->hasVerifiedEmail());
     }
-    /* @end-chisel-email-verification */
 }; ?>
 
 <section class="w-full">
@@ -92,7 +88,6 @@ new #[Title('Profile settings')] class extends Component {
             <div>
                 <flux:input wire:model="email" :label="__('Email')" type="email" required autocomplete="email" />
 
-                {{-- @chisel-email-verification --}}
                 @if ($this->hasUnverifiedEmail)
                     <div>
                         <flux:text class="mt-4">
@@ -110,7 +105,6 @@ new #[Title('Profile settings')] class extends Component {
                         @endif
                     </div>
                 @endif
-                {{-- @end-chisel-email-verification --}}
             </div>
 
             <div class="flex items-center gap-4">
@@ -123,12 +117,8 @@ new #[Title('Profile settings')] class extends Component {
             </div>
         </form>
 
-        {{-- @chisel-email-verification --}}
         @if ($this->showDeleteUser)
-        {{-- @end-chisel-email-verification --}}
             <livewire:pages::settings.delete-user-form />
-        {{-- @chisel-email-verification --}}
         @endif
-        {{-- @end-chisel-email-verification --}}
     </x-pages::settings.layout>
 </section>
